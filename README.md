@@ -1,5 +1,7 @@
 # Serverless API
 
+**Disclaimer:** This project is intended for educational purposes only and was originally developed approximately in the year 2022.
+
 Followed this tutorial: [Build a Serverless API with Cloudflare Workers](https://egghead.io/lessons/cloudflare-introduction-to-build-a-serverless-api-with-cloudflare-workers)
 
 The API data is saved at `src/resources_store.ts`.
@@ -14,7 +16,7 @@ The entire API data content can be accessed like this: `https://api.cf-testing.c
 
 Add a number at the end of the URL to return the specific ID: `https://api.cf-testing.com/api/resources/1`
 
-[Custom Error Response](https://developers.cloudflare.com/rules/custom-error-responses/): `https://api.cf-testing.com/api/resources/?custom=error`
+To filter by category: `https://api.cf-testing.com/api/resources/category/WEB%20DEV`
 
 ## OpenAPI Schema
 
@@ -93,48 +95,51 @@ paths:
                     domain
                     pictures","url":"https://www.1millionfreepictures.com/","main_cat1":"CREATIVE","main_cat2":"","tag1":"PHOTO
                     STOCKS","tag2":"","tag3":""}
+  /resources/category/{category}:
+    get:
+      summary: Filter resources by category from the World of Opportunities database
+      operationId: filterResourcesByCategory
+      tags:
+        - resources
+      description: Auto generated using Swagger Inspector
+      parameters:
+        - name: category
+          in: path
+          required: true
+          description: The main category to filter resources by (e.g., 'WEB DEV')
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    main_cat1:
+                      type: string
+                    tag1:
+                      type: string
+                    main_cat2:
+                      type: string
+                    description:
+                      type: string
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    url:
+                      type: string
+                    tag2:
+                      type: string
+                    tag3:
+                      type: string
+              examples:
+                '0':
+                  value: >-
+                    [{"id":0,"title":"000WebHost","description":"Zero cost website hosting with PHP, MySQL, cPanel & no ads","url":"https://www.000webhost.com/","main_cat1":"WEB
+                    DEV","main_cat2":"","tag1":"HOSTING","tag2":"WEBSITE","tag3":""}]
 ```
-
-* * * *
-* * * *
-
-
-# ʕ •́؈•̀) `worker-typescript-template`
-
-A batteries included template for kick starting a TypeScript Cloudflare worker project.
-
-## Note: You must use [wrangler](https://developers.cloudflare.com/workers/cli-wrangler/install-update) 1.17 or newer to use this template.
-
-## 🔋 Getting Started
-
-This template is meant to be used with [Wrangler](https://github.com/cloudflare/wrangler). If you are not already familiar with the tool, we recommend that you install the tool and configure it to work with your [Cloudflare account](https://dash.cloudflare.com). Documentation can be found [here](https://developers.cloudflare.com/workers/tooling/wrangler/).
-
-To generate using Wrangler, run this command:
-
-```bash
-wrangler generate my-ts-project https://github.com/cloudflare/worker-typescript-template
-```
-
-### 👩 💻 Developing
-
-[`src/index.ts`](./src/index.ts) calls the request handler in [`src/handler.ts`](./src/handler.ts), and will return the [request method](https://developer.mozilla.org/en-US/docs/Web/API/Request/method) for the given request.
-
-### 🧪 Testing
-
-This template comes with jest tests which simply test that the request handler can handle each request method. `npm test` will run your tests.
-
-### ✏️ Formatting
-
-This template uses [`prettier`](https://prettier.io/) to format the project. To invoke, run `npm run format`.
-
-### 👀 Previewing and Publishing
-
-For information on how to preview and publish your worker, please see the [Wrangler docs](https://developers.cloudflare.com/workers/tooling/wrangler/commands/#publish).
-
-## 🤢 Issues
-
-If you run into issues with this specific project, please feel free to file an issue [here](https://github.com/cloudflare/worker-typescript-template/issues). If the problem is with Wrangler, please file an issue [here](https://github.com/cloudflare/wrangler/issues).
-
-## ⚠️ Caveats
-
-The `service-worker-mock` used by the tests is not a perfect representation of the Cloudflare Workers runtime. It is a general approximation. We recommend that you test end to end with `wrangler dev` in addition to a [staging environment](https://developers.cloudflare.com/workers/tooling/wrangler/configuration/environments/) to test things before deploying.

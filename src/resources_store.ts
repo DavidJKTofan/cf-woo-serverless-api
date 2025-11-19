@@ -4208,34 +4208,12 @@ const _resources = [
       return _resources
     }
   
-    async find(id: number) {
-      return _resources.find(resource => resource.id.toString() === id.toString())
+    async find(id: string | number) {
+      const parsedId = typeof id === 'string' ? parseInt(id, 10) : id;
+      return _resources.find(resource => resource.id === parsedId)
     }
-
-    // async filter(filter_arg: string) {
-    //   return _resources.filter(resource => resource.main_cat1.toString() == filter_arg)
-    // }
 
     async filter(filter_arg: string) {
-      var result = []
-       for (let i = 0; i < _resources.length; i++) {
-           if(_resources[i].main_cat1 == filter_arg){
-               result.push(_resources[i])
-           }
-         }
-       return result 
+      return _resources.filter(resource => resource.main_cat1 === filter_arg)
     }
-
-    // async filter(main_cat1: string) {
-    //   return _resources.filter(resource => resource.main_cat1.includes(main_cat1))
-    // }
-
-    //   async filter(main_cat1: string) {
-    //     return _resources.filter(resource => resource["main_cat1"].includes(main_cat1))
-    //   }
-
-    // async filter(filter_arg: string) {
-    //   return _resources.filter(resource => resource["main_cat1"] == filter_arg)
-    // }
-
   }

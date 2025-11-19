@@ -14,4 +14,4 @@ router
   .get('/api/resources/category/:main_cat1', Main_Cat1)
   .get('*', () => new Response("Not found", { status: 404 }))
 
-export const handleRequest = request => router.handle(request)
+export const handleRequest = (request: Request) => router.handle(request)

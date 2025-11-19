@@ -1,6 +1,7 @@
+import { IRequest } from '../types'
 import Store from '../resources_store'
 
-const Resource = async request => {
+const Resource = async (request: IRequest) => {
   const resources = new Store()
   const resourceId = request.params.id
 

@@ -1,6 +1,7 @@
+import { IRequest } from '../types'
 import Store from '../resources_store'
 
-const Main_Cat1 = async request => {
+const Main_Cat1 = async (request: IRequest) => {
   const resources = new Store()
   const resourceMainCat = decodeURIComponent(request.params.main_cat1)
   

@@ -3,19 +3,19 @@
     "outDir": "./dist",
     "module": "es2022",
     "target": "es2022",
-    "lib": ["esnext"],
+    "lib": ["esnext", "esnext.disposable", "dom"],
     "alwaysStrict": true,
     "strict": true,
     "preserveConstEnums": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
     "types": [
-      "@cloudflare/workers-types",
       "@types/jest",
       "@types/service-worker-mock"
     ]
   },
-  "include": ["src"],
+  "include": ["src", "worker-configuration.d.ts"],
   "exclude": ["node_modules", "dist", "test"]
 }

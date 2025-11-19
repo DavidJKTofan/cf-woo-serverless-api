@@ -1,36 +1,42 @@
 {
-  "name": "worker-typescript-template",
-  "version": "1.0.0",
-  "description": "Cloudflare worker TypeScript template",
-  "scripts": {
-    "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
-    "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
-    "test": "jest --config jestconfig.json --verbose"
-  },
-  "author": "author",
-  "license": "MIT OR Apache-2.0",
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "typescript",
-      "prettier"
-    ]
-  },
-  "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/service-worker-mock": "^2.0.4",
-    "@typescript-eslint/eslint-plugin": "^4.16.1",
-    "@typescript-eslint/parser": "^4.16.1",
-    "eslint": "^7.21.0",
-    "eslint-config-prettier": "^8.1.0",
-    "jest": "^30.2.0",
-    "prettier": "^2.3.0",
-    "service-worker-mock": "^2.0.5",
-    "ts-jest": "^29.4.5",
-    "typescript": "^5.9.3",
-    "wrangler": "^4.49.0"
-  },
-  "dependencies": {
-    "itty-router": "^2.6.6"
-  }
+	"name": "serverless-woo-api",
+	"version": "1.0.0",
+	"description": "Example serverless API built with Cloudflare Workers and TypeScript",
+	"main": "src/index.ts",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"deploy:staging": "wrangler deploy --env staging",
+		"deploy:production": "wrangler deploy --env production",
+		"tail": "wrangler tail",
+		"type-check": "tsc --noEmit",
+		"lint": "eslint src/**/*.ts",
+		"format": "prettier --write \"src/**/*.ts\""
+	},
+	"keywords": [
+		"cloudflare",
+		"workers",
+		"serverless",
+		"api",
+		"typescript",
+		"edge-computing"
+	],
+	"author": "David JK Tofan",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/DavidJKTofan/serverless-woo-api"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20241127.0",
+		"@typescript-eslint/eslint-plugin": "^6.21.0",
+		"@typescript-eslint/parser": "^6.21.0",
+		"eslint": "^8.56.0",
+		"prettier": "^3.2.4",
+		"typescript": "^5.3.3",
+		"wrangler": "^4.49.0"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
 }

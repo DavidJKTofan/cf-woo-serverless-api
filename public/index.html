@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Serverless WOO API</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: monospace;
+				line-height: 1.6;
+				padding: 2rem;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			h1 {
+				font-size: 1.5rem;
+				margin-bottom: 0.5rem;
+				font-weight: normal;
+			}
+
+			h2 {
+				font-size: 1.1rem;
+				margin-top: 2rem;
+				margin-bottom: 0.5rem;
+				font-weight: normal;
+			}
+
+			p {
+				margin-bottom: 1rem;
+			}
+
+			em {
+				color: #666;
+			}
+
+			pre {
+				background: #f5f5f5;
+				padding: 1rem;
+				overflow-x: auto;
+				margin-bottom: 2rem;
+				border: 1px solid #ddd;
+			}
+
+			a {
+				color: #000;
+				text-decoration: underline;
+			}
+
+			@media (max-width: 768px) {
+				body {
+					padding: 1rem;
+				}
+
+				pre {
+					font-size: 0.85rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Serverless WOO API</h1>
+		<p>A Cloudflare Workers-powered RESTful API for curated resources.</p>
+		<p><em>For educational purposes only.</em></p>
+
+		<h2>Parameters</h2>
+		<pre>
+/api/resources    Request JSON data from Cloudflare's edge servers.
+Path params:
+/                 Returns all.
+#                 ID Number. Valid for integer between 0 and 381.
+?category=X       Filter by category (e.g., WEB%20DEV, CYBERSEC).</pre
+		>
+
+		<h2>Example</h2>
+		<pre>
+$ curl https://api.cf-testing.com/api/resources/32
+{
+  "id":32,
+  "title":"Bitbucket",
+  "description":"Bitbucket is more than just Git code management",
+  "url":"https://bitbucket.org/product",
+  "main_cat1":"WEB DEV",
+  "main_cat2":"",
+  "tag1":"DEVELOPMENT",
+  "tag2":"PLATFORM",
+  "tag3":"GIT CODE"
+}</pre
+		>
+
+		<p><a href="https://github.com/DavidJKTofan/serverless-woo-api" target="_blank">GitHub Repository</a></p>
+	</body>
+</html>

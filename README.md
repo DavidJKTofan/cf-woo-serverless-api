@@ -16,8 +16,6 @@ The entire API data content can be accessed like this: `https://api.cf-testing.c
 
 Add a number at the end of the URL to return the specific ID: `https://api.cf-testing.com/api/resources/1`
 
-To filter by category: `https://api.cf-testing.com/api/resources/category/WEB%20DEV`
-
 ## OpenAPI Schema
 
 With OpenAPI Schema one can use Cloudflare's [API Shield Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/) feature in order to define which API requests are valid.

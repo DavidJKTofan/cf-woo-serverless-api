@@ -1,5 +1,17 @@
-const _resources = [
-    {
+export interface Resource {
+  id: number;
+  title: string;
+  description: string;
+  url: string;
+  main_cat1: string;
+  main_cat2: string;
+  tag1: string;
+  tag2: string;
+  tag3: string;
+}
+
+const _resources: Resource[] = [
+  {
         "id": 0,
         "title": "000WebHost",
         "description": "Zero cost website hosting with PHP, MySQL, cPanel & no ads",
@@ -4201,19 +4213,18 @@ const _resources = [
         "tag2": "",
         "tag3": ""
       }
-  ]
-  
-  export default class ResourcesStore {
-    async all() {
-      return _resources
-    }
-  
-    async find(id: string | number) {
-      const parsedId = typeof id === 'string' ? parseInt(id, 10) : id;
-      return _resources.find(resource => resource.id === parsedId)
-    }
+];
 
-    async filter(filter_arg: string) {
-      return _resources.filter(resource => resource.main_cat1 === filter_arg)
-    }
+export default class ResourcesStore {
+  async all(): Promise<Resource[]> {
+    return _resources;
   }
+
+  async find(id: number): Promise<Resource | undefined> {
+    return _resources.find(resource => resource.id === id);
+  }
+
+  async filter(filterArg: string): Promise<Resource[]> {
+    return _resources.filter(resource => resource.main_cat1 === filterArg);
+  }
+}

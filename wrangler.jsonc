@@ -10,9 +10,15 @@
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
-		"directory": "./public"
+		"directory": "./public",
 	},
 	"observability": {
-		"enabled": false
-	}
+		"enabled": false,
+	},
+	"routes": [
+		{
+			"pattern": "api.cf-testing.com",
+			"custom_domain": true,
+		},
+	],
 }
